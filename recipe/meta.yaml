@@ -1,5 +1,5 @@
 {% set name = "language-tags" %}
-{% set version = "1.0.0" %}
+{% set version = "1.1.0" %}
 
 
 package:
@@ -8,10 +8,10 @@ package:
 
 source:
   - url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace("-", "_") }}-{{ version }}.tar.gz
-    sha256: ac417e9120a1091c548e6d37a00f9dd32f489d93b040d028f9f5005b321c23d0
+    sha256: 0c9a828ee63b5cc94876697f4d58449b0e4deaddab334f983b2a26d6979e8d4f
   # TODO: upstream PR
   - url: https://raw.githubusercontent.com/OnroerendErfgoed/{{ name }}/{{ version }}/LICENSE
-    sha256: c0a420b4a995e26cb6b6446cb02bc51e1f578492825edb5da59cac71726a9784
+    sha256: 0fb2e3000261a23850c34a627f1de8d5de3a4f7fec0ca449a53963317e66ab26
 
 build:
   number: 0
