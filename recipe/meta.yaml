@@ -1,17 +1,12 @@
-{% set name = "language-tags" %}
 {% set version = "1.2.0" %}
 
-
 package:
-  name: {{ name }}
+  name: language-tags
   version: {{ version }}
 
 source:
-  - url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace("-", "_") }}-{{ version }}.tar.gz
-    sha256: e934acba3e3dc85f867703eca421847a9ab7b7679b11b5d5cfd096febbf8bde6
-  # TODO: upstream PR
-  - url: https://raw.githubusercontent.com/OnroerendErfgoed/{{ name }}/{{ version }}/LICENSE
-    sha256: 9e07b99a50ee9d0b3bba384236a34763dbb85b555919bf0d20b4c4b37cc715aa
+  url: https://pypi.io/packages/source/l/language-tags/language_tags-{{ version }}.tar.gz
+  sha256: e934acba3e3dc85f867703eca421847a9ab7b7679b11b5d5cfd096febbf8bde6
 
 build:
   number: 0
@@ -24,7 +19,6 @@ requirements:
     - python >=2.7
   run:
     - python >=2.7
-    - six
 
 test:
   imports:
