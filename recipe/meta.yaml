@@ -5,20 +5,22 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/l/language-tags/language_tags-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/l/language-tags/language_tags-{{ version }}.tar.gz
   sha256: e934acba3e3dc85f867703eca421847a9ab7b7679b11b5d5cfd096febbf8bde6
 
 build:
-  number: 0
+  number: 1
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv --no-deps
+  script:
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
 
 requirements:
   host:
     - pip
-    - python >=2.7
+    - python {{ python_min }}
+    - setuptools
   run:
-    - python >=2.7
+    - python >={{ python_min }}
 
 test:
   imports:
@@ -28,6 +30,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/OnroerendErfgoed/language-tags
