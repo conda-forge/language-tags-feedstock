@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/prefix-dev/recipe-format/main/schema.json
+schema_version: 1
+
+context:
+  version: "1.3.0"
+  python_check_max: "3.14"
+
+package:
+  name: language-tags
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/l/language-tags/language_tags-${{ version }}.tar.gz
+  sha256: 5a0af805b9f639b0c62b5f76aae324e87c67455e8fd05d63a9a895556aaead86
+
+build:
+  number: 0
+  noarch: python
+  script:
+    - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
+
+requirements:
+  host:
+    - hatch-fancy-pypi-readme
+    - hatchling
+    - pip
+    - python ${{ python_min }}.*
+  run:
+    - python >=${{ python_min }}
+
+tests:
+  - python:
+      imports:
+        - language_tags
+        - language_tags.data
+      pip_check: true
+      python_version:
+        - ${{ python_min }}.*
+        - ${{ python_check_max }}.*
+  - files:
+      source:
+        - tests/
+    requirements:
+      run:
+        - pytest-cov
+        - python ${{ python_min }}.*
+    script:
+      - coverage run --source=language_tages --branch -m pytest -vv --tb=long --color=yes
+      - coverage report --show-missing --skip-covered --fail-under=100
+
+about:
+  summary: This project is a Python version of the language-tags Javascript project.
+  license: MIT
+  license_file: LICENSE
+  homepage: https://pypi.org/project/language-tags
+  repository: https://github.com/OnroerendErfgoed/language-tags
+
+extra:
+  recipe-maintainers:
+    - bollwyvl
