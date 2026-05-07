@@ -3,11 +3,13 @@ About language-tags-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/language-tags-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/OnroerendErfgoed/language-tags
+Home: https://pypi.org/project/language-tags
 
 Package license: MIT
 
 Summary: This project is a Python version of the language-tags Javascript project.
+
+Development: https://github.com/OnroerendErfgoed/language-tags
 
 Current build status
 ====================
